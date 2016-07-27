@@ -19,6 +19,5 @@ public class AppTest {
     @Test
     public void test() {
         app.addData();
-        System.out.println(app.getData());
     }
 }
