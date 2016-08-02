@@ -5,6 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,4 +24,6 @@ public class User {
     private String password;
 
     private Long deptId;
+
+    private List<Role> roles;
 }

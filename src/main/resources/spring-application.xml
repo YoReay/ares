@@ -91,7 +91,21 @@
           p:cacheManager-ref="cacheManagerFactory"/>
     <bean id="cacheManagerFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
           p:configLocation="classpath:ehcache.xml" p:shared="true"/>
-    <bean id="baseCache" name="ehcache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"
-          p:cacheManager-ref="cacheManagerFactory"/>
+    <bean id="baseCache" name="ehcache" class="org.springframework.cache.ehcache.EhCacheFactoryBean"/>
 
+    <bean id="userRealm" class="com.yoreay.ares.realm.UserRealm"/>
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager" p:realm-ref="userRealm"/>
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"/>
+        <property name="loginUrl" value="/"/>
+        <property name="unauthorizedUrl" value="unauthor.jsp"/>
+        <property name="filterChainDefinitions">
+            <value>
+                /user/info=authc
+            </value>
+        </property>
+    </bean>
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+
+    <context:component-scan base-package="com.yoreay.ares.service"/>
 </beans>

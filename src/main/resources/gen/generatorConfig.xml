@@ -28,7 +28,16 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="${package.mapper}" targetProject="src\main\java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
-		<table tableName="User" domainObjectName="User" enableSelectByPrimaryKey="false" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="false">
+		<table tableName="role" domainObjectName="Role" enableSelectByPrimaryKey="false" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="false">
+           <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="user_role" domainObjectName="UserRole" enableSelectByPrimaryKey="false" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+        <table tableName="role_permission" domainObjectName="RolePermission" enableSelectByPrimaryKey="false" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="false">
+            <property name="useActualColumnNames" value="true"/>
+        </table>
+		<table tableName="permission" domainObjectName="Permission" enableSelectByPrimaryKey="false" enableUpdateByPrimaryKey="true" enableDeleteByPrimaryKey="false">
            <property name="useActualColumnNames" value="true"/>
         </table>
        </context>

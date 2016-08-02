@@ -2,8 +2,6 @@ package com.yoreay.ares;
 
 import com.yoreay.ares.entity.User;
 import com.yoreay.ares.mapper.UserMapper;
-import net.sf.ehcache.Cache;
-import net.sf.ehcache.Element;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +20,8 @@ public class AppTest {
     @Autowired
     private UserMapper userMapper;
 
-    @Autowired
-    private Cache ehcache;
+//    @Autowired
+//    private Cache ehcache;
 
     @Test
     public void test() {
@@ -34,12 +32,12 @@ public class AppTest {
 
         list = userMapper.selectAll();
 
-        ehcache.put(new Element("list", list));
+//        ehcache.put(new Element("list", list));
         System.out.println(list.size());
 
-        List<User> users = (List<User>) ehcache.get("list").getObjectValue();
-        for (User user : users) {
-            System.out.println(user);
-        }
+//        List<User> users = (List<User>) ehcache.get("list").getObjectValue();
+//        for (User user : users) {
+//            System.out.println(user);
+//        }
     }
 }
