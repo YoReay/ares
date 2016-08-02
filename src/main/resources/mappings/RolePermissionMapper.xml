@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yoreay.ares.mapper.RolePermissionMapper">
+  <resultMap id="BaseResultMap" type="com.yoreay.ares.entity.RolePermission">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="roleId" jdbcType="BIGINT" property="roleId" />
+    <result column="permissionId" jdbcType="BIGINT" property="permissionId" />
+    <result column="creator" jdbcType="VARCHAR" property="creator" />
+    <result column="created" jdbcType="TIMESTAMP" property="created" />
+  </resultMap>
+  <insert id="insert" parameterType="com.yoreay.ares.entity.RolePermission">
+    insert into role_permission (id, roleId, permissionId, 
+      creator, created)
+    values (#{id,jdbcType=BIGINT}, #{roleId,jdbcType=BIGINT}, #{permissionId,jdbcType=BIGINT}, 
+      #{creator,jdbcType=VARCHAR}, #{created,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.yoreay.ares.entity.RolePermission">
+    update role_permission
+    set roleId = #{roleId,jdbcType=BIGINT},
+      permissionId = #{permissionId,jdbcType=BIGINT},
+      creator = #{creator,jdbcType=VARCHAR},
+      created = #{created,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id, roleId, permissionId, creator, created
+    from role_permission
+  </select>
+</mapper>

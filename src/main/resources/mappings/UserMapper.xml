@@ -32,4 +32,12 @@
     select id, created, modified, isDeleted, username, password, deptId
     from user
   </select>
+
+  <select id="selectById" parameterType="java.lang.Long" resultType="com.yoreay.ares.entity.User">
+    select * from user WHERE id = #{id};
+  </select>
+
+  <select id="selectByUsername" parameterType="java.lang.String" resultType="com.yoreay.ares.entity.User">
+    select * from user WHERE username = #{username};
+  </select>
 </mapper>
