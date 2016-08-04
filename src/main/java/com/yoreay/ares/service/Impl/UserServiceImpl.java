@@ -8,11 +8,12 @@ import com.yoreay.ares.mapper.RoleMapper;
 import com.yoreay.ares.mapper.UserMapper;
 import com.yoreay.ares.service.UserService;
 import org.apache.commons.collections4.CollectionUtils;
-import org.apache.ibatis.executor.ReuseExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by sanze on 2016/7/28.
@@ -48,5 +49,14 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserById(Long id) {
         return userMapper.selectById(id);
+    }
+
+    @Override
+    public Map<String, Object> getAllUser() {
+        List<User> users = userMapper.selectAll();
+        Map<String, Object> result = new HashMap<>();
+        result.put("total", users.size());
+        result.put("rows", users);
+        return result;
     }
 }
