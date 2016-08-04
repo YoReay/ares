@@ -101,7 +101,9 @@
         <property name="unauthorizedUrl" value="unauthor.jsp"/>
         <property name="filterChainDefinitions">
             <value>
-                /user/info=authc
+                /login=anon
+                /logout=anon
+                /*=authc
             </value>
         </property>
     </bean>

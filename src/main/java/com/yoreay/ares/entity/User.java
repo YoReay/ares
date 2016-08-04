@@ -1,16 +1,18 @@
 package com.yoreay.ares.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
 @Getter
 @Setter
 @ToString
-public class User {
+public class User implements Serializable{
     private Long id;
 
     private Date created;
@@ -26,4 +28,7 @@ public class User {
     private Long deptId;
 
     private List<Role> roles;
+
+    @JsonProperty(value = "OrderID")
+    private String orderID;
 }
